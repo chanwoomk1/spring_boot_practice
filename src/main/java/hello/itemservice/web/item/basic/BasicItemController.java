@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import hello.itemservice.connection.DataSourceProvider;
 import hello.itemservice.domain.item.Item;
 import hello.itemservice.domain.item.ItemRepository;
-import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 
 
@@ -23,6 +23,7 @@ import lombok.RequiredArgsConstructor;
 public class BasicItemController {
 
     private final ItemRepository itemRepository;
+    private final DataSourceProvider dataSourceProvider;
 
     @GetMapping
     public String getMethodName(Model model) {
@@ -62,10 +63,28 @@ public class BasicItemController {
         return "redirect:/basic/items/{itemId}";
     }
 
-    @PostConstruct
-    public void init(){
-        itemRepository.save(new Item("testA",1000,10));
-        itemRepository.save(new Item("testB",2000,10));
+    /**
+     * 현재 사용 중인 데이터소스 정보를 확인하는 엔드포인트
+     */
+    @GetMapping("/datasource-info")
+    public String getDataSourceInfo(Model model) {
+        model.addAttribute("providerName", dataSourceProvider.getProviderName());
+        model.addAttribute("isConnectionValid", dataSourceProvider.isConnectionValid());
+        
+        // HikariCP인 경우 추가 정보 제공
+        if (dataSourceProvider instanceof hello.itemservice.connection.HikariDataSourceProvider) {
+            hello.itemservice.connection.HikariDataSourceProvider hikariProvider = 
+                (hello.itemservice.connection.HikariDataSourceProvider) dataSourceProvider;
+            model.addAttribute("poolStats", hikariProvider.getPoolStats());
+        }
+        
+        return "basic/datasource-info";
     }
+
+    // @PostConstruct
+    // public void init(){
+    //     itemRepository.save(new Item("testA",1000,10));
+    //     itemRepository.save(new Item("testB",2000,10));
+    // }
     
 }

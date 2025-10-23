@@ -39,6 +39,9 @@ dependencies {
     
     // 💡 H2 데이터베이스
     runtimeOnly 'com.h2database:h2' 
+    
+    // 💡 HikariCP 연결 풀
+    implementation 'com.zaxxer:HikariCP:5.1.0'
 
     // 테스트 종속성
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

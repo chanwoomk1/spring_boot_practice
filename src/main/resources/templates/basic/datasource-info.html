@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link href="../css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <title>데이터소스 정보</title>
+</head>
+<body>
+    <div class="container" style="max-width: 800px">
+        <div class="py-5 text-center">
+            <h2>데이터소스 정보</h2>
+        </div>
+        
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">현재 데이터소스 상태</h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-borderless">
+                            <tr>
+                                <td><strong>데이터소스 제공자:</strong></td>
+                                <td>
+                                    <span class="badge bg-primary" th:text="${providerName}">DriverManager</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>연결 상태:</strong></td>
+                                <td>
+                                    <span class="badge" 
+                                          th:class="${isConnectionValid} ? 'bg-success' : 'bg-danger'"
+                                          th:text="${isConnectionValid} ? '정상' : '오류'">정상</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- HikariCP 풀 정보 (HikariCP 사용 시에만 표시) -->
+        <div class="row mt-4" th:if="${poolStats != null}">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">HikariCP 연결 풀 상태</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info" th:text="${poolStats}">
+                            HikariCP 풀 상태 정보
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 사용 가능한 데이터소스 타입 정보 -->
+        <div class="row mt-4">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">사용 가능한 데이터소스 타입</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6>DriverManager</h6>
+                                <ul class="list-unstyled">
+                                    <li>✓ 간단한 설정</li>
+                                    <li>✓ 학습 목적에 적합</li>
+                                    <li>✗ 연결 풀링 없음</li>
+                                    <li>✗ 성능 제한</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>HikariCP</h6>
+                                <ul class="list-unstyled">
+                                    <li>✓ 고성능 연결 풀링</li>
+                                    <li>✓ 자동 리소스 관리</li>
+                                    <li>✓ 모니터링 기능</li>
+                                    <li>✓ 프로덕션 환경 적합</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-4">
+            <div class="col text-center">
+                <a href="/basic/items" class="btn btn-primary">상품 목록으로 돌아가기</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

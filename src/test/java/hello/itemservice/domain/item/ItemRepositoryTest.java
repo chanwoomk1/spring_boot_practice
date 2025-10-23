@@ -3,17 +3,18 @@ package hello.itemservice.domain.item;
 import java.sql.SQLException;
 import java.util.NoSuchElementException;
 
-import static org.assertj.core.api.Assertions.assertThat; // Assertions 추가
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.Test;
 
+import hello.itemservice.connection.DriverManagerDataSourceProvider;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 class ItemRepositoryTest {
     
-    // 클래스 이름이 ItemDBRepository라고 가정
-    ItemDBRepository itemDBRepository = new ItemDBRepository();
+    // DriverManagerDataSourceProvider를 사용하여 ItemDBRepository 생성
+    ItemDBRepository itemDBRepository = new ItemDBRepository(new DriverManagerDataSourceProvider());
     
     // @AfterEach
     // void tearDown() throws SQLException {
