@@ -72,9 +72,7 @@ public class BasicItemController {
         model.addAttribute("isConnectionValid", dataSourceProvider.isConnectionValid());
         
         // HikariCP인 경우 추가 정보 제공
-        if (dataSourceProvider instanceof hello.itemservice.connection.HikariDataSourceProvider) {
-            hello.itemservice.connection.HikariDataSourceProvider hikariProvider = 
-                (hello.itemservice.connection.HikariDataSourceProvider) dataSourceProvider;
+        if (dataSourceProvider instanceof hello.itemservice.connection.HikariDataSourceProvider hikariProvider) {
             model.addAttribute("poolStats", hikariProvider.getPoolStats());
         }
         

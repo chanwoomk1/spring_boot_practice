@@ -18,15 +18,11 @@ public class DBconnectUtilTest {
         // given
         DriverManagerDataSourceProvider provider = new DriverManagerDataSourceProvider();
         
-        // when
-        Connection connection = provider.getConnection();
-        
-        // then
-        assertThat(connection).isNotNull();
-        assertThat(connection.isClosed()).isFalse();
-        assertThat(provider.getProviderName()).isEqualTo("DriverManager");
-        
-        // cleanup
-        connection.close();
+        // when & then
+        try (Connection connection = provider.getConnection()) {
+            assertThat(connection).isNotNull();
+            assertThat(connection.isClosed()).isFalse();
+            assertThat(provider.getProviderName()).isEqualTo("DriverManager");
+        }
     }
 }

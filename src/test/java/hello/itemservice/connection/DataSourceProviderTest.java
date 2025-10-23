@@ -30,46 +30,35 @@ class DataSourceProviderTest {
         // given
         DriverManagerDataSourceProvider provider = new DriverManagerDataSourceProvider();
         
-        // when
-        Connection connection = provider.getConnection();
-        
-        // then
-        assertThat(connection).isNotNull();
-        assertThat(connection.isClosed()).isFalse();
-        assertThat(provider.getProviderName()).isEqualTo("DriverManager");
-        assertThat(provider.isConnectionValid()).isTrue();
-        
-        // cleanup
-        connection.close();
-        log.info("DriverManager 연결 테스트 완료");
+        // when & then
+        try (Connection connection = provider.getConnection()) {
+            assertThat(connection).isNotNull();
+            assertThat(connection.isClosed()).isFalse();
+            assertThat(provider.getProviderName()).isEqualTo("DriverManager");
+            assertThat(provider.isConnectionValid()).isTrue();
+            
+            log.info("DriverManager 연결 테스트 완료");
+        }
     }
     
     @Test
     void hikariDataSourceProvider_연결테스트() throws SQLException {
         // given
-        HikariDataSourceProvider provider = new HikariDataSourceProvider();
-        
-        try {
-            // when
-            Connection connection = provider.getConnection();
-            
-            // then
-            assertThat(connection).isNotNull();
-            assertThat(connection.isClosed()).isFalse();
-            assertThat(provider.getProviderName()).isEqualTo("HikariCP");
-            assertThat(provider.isConnectionValid()).isTrue();
-            
-            // 풀 상태 확인
-            String poolStats = provider.getPoolStats();
-            assertThat(poolStats).isNotNull();
-            log.info("HikariCP 풀 상태: {}", poolStats);
-            
-            // cleanup
-            connection.close();
-            log.info("HikariCP 연결 테스트 완료");
-            
-        } finally {
-            provider.close();
+        try (HikariDataSourceProvider provider = new HikariDataSourceProvider()) {
+            // when & then
+            try (Connection connection = provider.getConnection()) {
+                assertThat(connection).isNotNull();
+                assertThat(connection.isClosed()).isFalse();
+                assertThat(provider.getProviderName()).isEqualTo("HikariCP");
+                assertThat(provider.isConnectionValid()).isTrue();
+                
+                // 풀 상태 확인
+                String poolStats = provider.getPoolStats();
+                assertThat(poolStats).isNotNull();
+                log.info("HikariCP 풀 상태: {}", poolStats);
+                
+                log.info("HikariCP 연결 테스트 완료");
+            }
         }
     }
     

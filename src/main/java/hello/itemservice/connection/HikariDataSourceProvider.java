@@ -14,15 +14,25 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * HikariCP 연결 풀을 사용하여 데이터베이스 연결을 제공하는 구현체
  * 고성능 연결 풀링과 자동 리소스 관리를 제공
+ * 
+ * 주의: 이 클래스는 Spring Bean으로 등록되어야 하며, 
+ * Spring이 자동으로 리소스 해제를 관리합니다.
  */
 @Slf4j
-public class HikariDataSourceProvider implements DataSourceProvider {
+public class HikariDataSourceProvider implements DataSourceProvider, AutoCloseable {
     
     private final HikariDataSource dataSource;
+    private volatile boolean initialized = false;
     
     public HikariDataSourceProvider() {
-        this.dataSource = createHikariDataSource();
-        log.info("HikariCP 데이터소스 초기화 완료");
+        try {
+            this.dataSource = createHikariDataSource();
+            this.initialized = true;
+            log.info("HikariCP 데이터소스 초기화 완료");
+        } catch (Exception e) {
+            log.error("HikariCP 데이터소스 초기화 실패", e);
+            throw new IllegalStateException("HikariCP 데이터소스 초기화에 실패했습니다.", e);
+        }
     }
     
     private HikariDataSource createHikariDataSource() {
@@ -58,6 +68,10 @@ public class HikariDataSourceProvider implements DataSourceProvider {
     
     @Override
     public Connection getConnection() throws SQLException {
+        if (!initialized || dataSource == null || dataSource.isClosed()) {
+            throw new IllegalStateException("HikariCP 데이터소스가 초기화되지 않았거나 종료되었습니다.");
+        }
+        
         try {
             Connection connection = dataSource.getConnection();
             log.debug("HikariCP 연결 획득: {}, class={}", connection, connection.getClass());
@@ -107,12 +121,61 @@ public class HikariDataSourceProvider implements DataSourceProvider {
     
     /**
      * 리소스를 안전하게 해제합니다.
+     * 
+     * 주의사항:
+     * 1. 이 메서드는 전체 연결 풀을 종료합니다
+     * 2. Spring Bean으로 등록된 경우 Spring이 자동으로 호출합니다
+     * 3. 수동으로 생성한 경우 반드시 호출해야 합니다
      */
+    @Override
+    @SuppressWarnings("resource") // DataSource는 애플리케이션 생명주기와 함께 수동 종료가 맞음
     public void close() {
         if (dataSource != null && !dataSource.isClosed()) {
-            log.info("HikariCP 데이터소스 종료 중...");
-            dataSource.close();
-            log.info("HikariCP 데이터소스 종료 완료");
+            try {
+                log.info("HikariCP 데이터소스 종료 시작 - 현재 풀 상태: {}", getPoolStats());
+                
+                // 연결 풀 종료 (모든 연결을 닫음)
+                // 주의: try-with-resources를 사용하지 않는 이유:
+                // HikariDataSource는 연결 풀 전체를 관리하는 객체이므로
+                // 애플리케이션 생명주기와 함께 관리되어야 함
+                @SuppressWarnings("resource") // HikariDataSource는 연결 풀 전체를 종료하는 메서드
+                var dataSourceToClose = dataSource;
+                dataSourceToClose.close();
+                
+                log.info("HikariCP 데이터소스 종료 완료");
+            } catch (Exception e) {
+                log.error("HikariCP 데이터소스 종료 중 오류 발생", e);
+                // 종료 중 오류가 발생해도 로그만 남기고 예외를 던지지 않음
+            } finally {
+                initialized = false;
+            }
+        } else {
+            log.debug("HikariCP 데이터소스가 이미 종료되었거나 초기화되지 않음");
         }
+    }
+    
+    /**
+     * 데이터소스가 안전하게 종료되었는지 확인합니다.
+     * @return 종료 상태 여부
+     */
+    public boolean isClosed() {
+        return !initialized || dataSource == null || dataSource.isClosed();
+    }
+    
+    /**
+     * 데이터소스 상태를 확인합니다.
+     * @return 상태 정보 문자열
+     */
+    public String getStatus() {
+        if (!initialized) {
+            return "초기화되지 않음";
+        }
+        if (dataSource == null) {
+            return "데이터소스가 null";
+        }
+        if (dataSource.isClosed()) {
+            return "종료됨";
+        }
+        return "정상 동작 중";
     }
 }
