@@ -10,19 +10,22 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.function.Function;
 
+import javax.sql.DataSource;
+
+import org.springframework.jdbc.datasource.DataSourceUtils;
+import org.springframework.jdbc.support.JdbcUtils;
 import org.springframework.stereotype.Repository;
 
-import hello.itemservice.connection.DataSourceProvider;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Repository
 public class ItemDBRepository implements ItemRepository {
 
-    private final DataSourceProvider dataSourceProvider;
+    private final DataSource datasource ;
     
-    public ItemDBRepository(DataSourceProvider dataSourceProvider) {
-        this.dataSourceProvider = dataSourceProvider;
+    public ItemDBRepository(DataSource datasource) {
+        this.datasource = datasource;
     }
 
     /**
@@ -38,7 +41,7 @@ public class ItemDBRepository implements ItemRepository {
         ResultSet rs = null;
         
         try {
-            con = dataSourceProvider.getConnection();
+            con = getConnection();
             pstmt = con.prepareStatement(sql);
             
             // 파라미터 설정
@@ -70,7 +73,7 @@ public class ItemDBRepository implements ItemRepository {
         PreparedStatement pstmt = null;
         
         try {
-            con = dataSourceProvider.getConnection();
+            con = getConnection();
             pstmt = con.prepareStatement(sql);
             
             // 파라미터 설정
@@ -103,7 +106,7 @@ public class ItemDBRepository implements ItemRepository {
         ResultSet rs = null;
         
         try {
-            con = dataSourceProvider.getConnection();
+            con = getConnection();
             pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             
             // 파라미터 설정
@@ -222,26 +225,16 @@ public class ItemDBRepository implements ItemRepository {
         executeUpdate(sql, null);
     }
 
-    /**
-     * 데이터베이스 리소스를 안전하게 해제하는 메서드
-     * 리소스 해제 순서: ResultSet -> Statement -> Connection
-     */
-    private void close(Connection con, Statement st, ResultSet rs) {
-        closeResource(rs, "ResultSet");
-        closeResource(st, "Statement");
-        closeResource(con, "Connection");
+    private Connection getConnection() throws SQLException {
+        Connection con = DataSourceUtils.getConnection(datasource);
+        log.info("getConnection: {}", con);
+        return con;
     }
 
-    /**
-     * 개별 리소스를 안전하게 해제하는 헬퍼 메서드
-     */
-    private void closeResource(AutoCloseable resource, String resourceName) {
-        if (resource != null) {
-            try {
-                resource.close();
-            } catch (Exception e) {
-                log.warn("{} 닫기 오류", resourceName, e);
-            }
-        }
+    private void close(Connection con, Statement st, ResultSet rs) {
+        JdbcUtils.closeResultSet(rs);
+        JdbcUtils.closeStatement(st);
+        //주의! 트랜잭션 동기화를 사용하려면 DataSourceUtils를 사용해야 한다.
+        DataSourceUtils.releaseConnection(con, datasource);
     }
 }

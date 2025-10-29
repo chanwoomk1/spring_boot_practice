@@ -10,9 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import hello.itemservice.connection.DataSourceProvider;
 import hello.itemservice.domain.item.Item;
-import hello.itemservice.domain.item.ItemRepository;
+import hello.itemservice.service.item.ItemService;
 import lombok.RequiredArgsConstructor;
 
 
@@ -22,67 +21,61 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class BasicItemController {
 
-    private final ItemRepository itemRepository;
-    private final DataSourceProvider dataSourceProvider;
+    private final ItemService itemService;
 
     @GetMapping
-    public String getMethodName(Model model) {
-        List<Item> items=itemRepository.findAll();
-        model.addAttribute("items",items);
+    public String items(Model model) {
+        List<Item> items = itemService.findItems();
+        model.addAttribute("items", items);
         return "basic/items";
     }
 
     @GetMapping("/{itemId}")
-    public String item(@PathVariable Long itemId,Model model) {
-        Item item=itemRepository.findById(itemId);
-        model.addAttribute("item",item);
+    public String item(@PathVariable Long itemId, Model model) {
+        Item item = itemService.findItem(itemId);
+        model.addAttribute("item", item);
         return "basic/item";
     }
 
     @GetMapping("/add")
-    public String addItemV3(Model model) {
+    public String addForm(Model model) {
         return "basic/addForm";
     }
+
     @PostMapping("/add")
-    public String addItemV3(Item item,RedirectAttributes redirectAttributes) {
-        Item savedItem=itemRepository.save(item);
-        redirectAttributes.addAttribute("itemId",savedItem.getId());
-        redirectAttributes.addAttribute("status",true);
-        return "redirect:/basic/items/{itemId}";
+    public String addItem(Item item, RedirectAttributes redirectAttributes) {
+        try {
+            Item savedItem = itemService.saveItem(item);
+            redirectAttributes.addAttribute("itemId", savedItem.getId());
+            redirectAttributes.addAttribute("status", true);
+            return "redirect:/basic/items/{itemId}";
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "아이템 저장에 실패했습니다.");
+            return "redirect:/basic/items/add";
+        }
     }
 
     @GetMapping("/{itemId}/edit")
-    public String edit(@PathVariable Long itemId, Model model) {
-        Item item=itemRepository.findById(itemId);
-        model.addAttribute("item",item);
+    public String editForm(@PathVariable Long itemId, Model model) {
+        Item item = itemService.findItem(itemId);
+        model.addAttribute("item", item);
         return "basic/editForm";
     }
+
     @PostMapping("/{itemId}/edit")
     public String edit(@PathVariable Long itemId, Item item) {
-        itemRepository.update(itemId,item);
-        return "redirect:/basic/items/{itemId}";
-    }
-
-    /**
-     * 현재 사용 중인 데이터소스 정보를 확인하는 엔드포인트
-     */
-    @GetMapping("/datasource-info")
-    public String getDataSourceInfo(Model model) {
-        model.addAttribute("providerName", dataSourceProvider.getProviderName());
-        model.addAttribute("isConnectionValid", dataSourceProvider.isConnectionValid());
-        
-        // HikariCP인 경우 추가 정보 제공
-        if (dataSourceProvider instanceof hello.itemservice.connection.HikariDataSourceProvider hikariProvider) {
-            model.addAttribute("poolStats", hikariProvider.getPoolStats());
+        try {
+            itemService.updateItem(itemId, item);
+            return "redirect:/basic/items/{itemId}";
+        } catch (Exception e) {
+            return "redirect:/basic/items/{itemId}/edit";
         }
-        
-        return "basic/datasource-info";
     }
 
     // @PostConstruct
     // public void init(){
-    //     itemRepository.save(new Item("testA",1000,10));
-    //     itemRepository.save(new Item("testB",2000,10));
+    //     itemService.saveItem(new Item("testA",1000,10));
+    //     itemService.saveItem(new Item("testB",2000,10));
     // }
     
 }
