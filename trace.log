@@ -1,0 +1,293 @@
+2025-12-04T14:23:11.852+09:00  INFO 84947 --- [item-service] [main] h.itemservice.ItemServiceApplication     : Starting ItemServiceApplication using Java 17.0.16 with PID 84947 (/Users/chanwoo/Desktop/item-service/build/classes/java/main started by chanwoo in /Users/chanwoo/Desktop/item-service)
+2025-12-04T14:23:11.854+09:00  INFO 84947 --- [item-service] [main] h.itemservice.ItemServiceApplication     : The following 1 profile is active: "trace"
+2025-12-04T14:23:12.059+09:00  WARN 84947 --- [item-service] [main] trationDelegate$BeanPostProcessorChecker : Bean 'threadLocalLogTrace' of type [hello.itemservice.debug.trace.ThreadLocalLogTrace] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [customBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-12-04T14:23:12.130+09:00  INFO 84947 --- [item-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-12-04T14:23:12.135+09:00  INFO 84947 --- [item-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-04T14:23:12.136+09:00  INFO 84947 --- [item-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-12-04T14:23:12.150+09:00  INFO 84947 --- [item-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-04T14:23:12.150+09:00  INFO 84947 --- [item-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 284 ms
+2025-12-04T14:23:12.176+09:00  INFO 84947 --- [item-service] [main] com.zaxxer.hikari.HikariDataSource       : ItemServicePool - Starting...
+2025-12-04T14:23:12.212+09:00  INFO 84947 --- [item-service] [main] com.zaxxer.hikari.pool.HikariPool        : ItemServicePool - Added connection conn0: url=jdbc:h2:tcp://localhost/~/test user=SA
+2025-12-04T14:23:12.213+09:00  INFO 84947 --- [item-service] [main] com.zaxxer.hikari.HikariDataSource       : ItemServicePool - Start completed.
+2025-12-04T14:23:12.234+09:00  INFO 84947 --- [item-service] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2025-12-04T14:23:12.323+09:00  INFO 84947 --- [item-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-12-04T14:23:12.327+09:00  INFO 84947 --- [item-service] [main] h.itemservice.ItemServiceApplication     : Started ItemServiceApplication in 0.621 seconds (process running for 0.718)
+2025-12-04T14:23:17.850+09:00  INFO 84947 --- [item-service] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-04T14:23:17.850+09:00  INFO 84947 --- [item-service] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-12-04T14:23:17.851+09:00  INFO 84947 --- [item-service] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-12-04T14:23:17.865+09:00  INFO 84947 --- [item-service] [http-nio-8080-exec-1] h.i.debug.trace.ThreadLocalLogTrace      : [850dfbbe] BasicItemController.items()
+2025-12-04T14:23:17.865+09:00  INFO 84947 --- [item-service] [http-nio-8080-exec-1] h.i.debug.trace.ThreadLocalLogTrace      : [850dfbbe] |-->ItemService.findItems()
+2025-12-04T14:23:17.865+09:00  INFO 84947 --- [item-service] [http-nio-8080-exec-1] h.i.debug.trace.ThreadLocalLogTrace      : [850dfbbe] | |-->ItemRepository.findAll()
+2025-12-04T14:23:17.869+09:00  INFO 84947 --- [item-service] [http-nio-8080-exec-1] h.i.domain.item.ItemDBRepository         : getConnection: HikariProxyConnection@1523663257 wrapping conn0: url=jdbc:h2:tcp://localhost/~/test user=SA
+2025-12-04T14:23:17.876+09:00  INFO 84947 --- [item-service] [http-nio-8080-exec-1] h.i.debug.trace.ThreadLocalLogTrace      : [850dfbbe] | |<--ItemRepository.findAll() time=11ms
+2025-12-04T14:23:17.876+09:00  INFO 84947 --- [item-service] [http-nio-8080-exec-1] h.i.debug.trace.ThreadLocalLogTrace      : [850dfbbe] |<--ItemService.findItems() time=11ms
+2025-12-04T14:23:17.876+09:00  INFO 84947 --- [item-service] [http-nio-8080-exec-1] h.i.debug.trace.ThreadLocalLogTrace      : [850dfbbe] BasicItemController.items() time=11ms
+2025-12-04T14:26:04.728+09:00  INFO 84947 --- [item-service] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-12-04T14:26:04.731+09:00  INFO 84947 --- [item-service] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-12-04T14:26:04.732+09:00  INFO 84947 --- [item-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : ItemServicePool - Shutdown initiated...
+2025-12-04T14:26:04.736+09:00  INFO 84947 --- [item-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : ItemServicePool - Shutdown completed.
+2025-12-04T14:27:34.270+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Starting ItemServiceTest using Java 17.0.16 with PID 85180 (started by chanwoo in /Users/chanwoo/Desktop/item-service)
+2025-12-04T14:27:34.271+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : The following 1 profile is active: "trace"
+2025-12-04T14:27:34.574+09:00  WARN 85180 --- [item-service] [main] trationDelegate$BeanPostProcessorChecker : Bean 'threadLocalLogTrace' of type [hello.itemservice.debug.trace.ThreadLocalLogTrace] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [customBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-12-04T14:27:34.605+09:00  INFO 85180 --- [item-service] [main] com.zaxxer.hikari.HikariDataSource       : ItemServicePool - Starting...
+2025-12-04T14:27:34.645+09:00  INFO 85180 --- [item-service] [main] com.zaxxer.hikari.pool.HikariPool        : ItemServicePool - Added connection conn0: url=jdbc:h2:tcp://localhost/~/test user=SA
+2025-12-04T14:27:34.649+09:00  INFO 85180 --- [item-service] [main] com.zaxxer.hikari.HikariDataSource       : ItemServicePool - Start completed.
+2025-12-04T14:27:34.722+09:00  INFO 85180 --- [item-service] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2025-12-04T14:27:34.848+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Started ItemServiceTest in 0.724 seconds (process running for 1.067)
+2025-12-04T14:27:35.185+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [e747e275] ItemService.saveItem()
+2025-12-04T14:27:35.186+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [e747e275] |-->ItemRepository.save()
+2025-12-04T14:27:35.188+09:00  INFO 85180 --- [item-service] [main] h.i.domain.item.ItemDBRepository         : getConnection: HikariProxyConnection@1961805376 wrapping conn0: url=jdbc:h2:tcp://localhost/~/test user=SA
+2025-12-04T14:27:35.199+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [e747e275] |<--ItemRepository.save() time=13ms
+2025-12-04T14:27:35.199+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [e747e275] ItemService.saveItem() time=14ms
+2025-12-04T14:27:35.213+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [818e3ac3] ItemService.saveItem()
+2025-12-04T14:27:35.214+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [818e3ac3] |-->ItemRepository.save()
+2025-12-04T14:27:35.214+09:00  INFO 85180 --- [item-service] [main] h.i.domain.item.ItemDBRepository         : getConnection: HikariProxyConnection@303946916 wrapping conn0: url=jdbc:h2:tcp://localhost/~/test user=SA
+2025-12-04T14:27:35.215+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [818e3ac3] |<--ItemRepository.save() time=1ms
+2025-12-04T14:27:35.215+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [818e3ac3] ItemService.saveItem() time=2ms
+2025-12-04T14:27:35.220+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [a23ac518] ItemService.findItem()
+2025-12-04T14:27:35.220+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [a23ac518] |-->ItemRepository.findById()
+2025-12-04T14:27:35.220+09:00  INFO 85180 --- [item-service] [main] h.i.domain.item.ItemDBRepository         : getConnection: HikariProxyConnection@783733578 wrapping conn0: url=jdbc:h2:tcp://localhost/~/test user=SA
+2025-12-04T14:27:35.222+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [a23ac518] |<--ItemRepository.findById() time=2ms
+2025-12-04T14:27:35.223+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [a23ac518] ItemService.findItem() time=3ms
+2025-12-04T14:27:35.223+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : First item exists after rollback: Item(id=103, itemName=상품1, price=10000, quantity=5)
+2025-12-04T14:27:35.231+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [596ec873] ItemService.saveItem()
+2025-12-04T14:27:35.231+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [596ec873] |-->ItemRepository.save()
+2025-12-04T14:27:35.232+09:00  INFO 85180 --- [item-service] [main] h.i.domain.item.ItemDBRepository         : getConnection: HikariProxyConnection@88226327 wrapping conn0: url=jdbc:h2:tcp://localhost/~/test user=SA
+2025-12-04T14:27:35.233+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [596ec873] |<--ItemRepository.save() time=2ms
+2025-12-04T14:27:35.233+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [596ec873] ItemService.saveItem() time=2ms
+2025-12-04T14:27:35.233+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [8b1b6310] ItemService.saveItem()
+2025-12-04T14:27:35.233+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [8b1b6310] |-->ItemRepository.save()
+2025-12-04T14:27:35.233+09:00  INFO 85180 --- [item-service] [main] h.i.domain.item.ItemDBRepository         : getConnection: HikariProxyConnection@1124047479 wrapping conn0: url=jdbc:h2:tcp://localhost/~/test user=SA
+2025-12-04T14:27:35.233+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [8b1b6310] |<--ItemRepository.save() time=0ms
+2025-12-04T14:27:35.234+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [8b1b6310] ItemService.saveItem() time=1ms
+2025-12-04T14:27:35.234+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [6edda8a1] ItemService.saveItem()
+2025-12-04T14:27:35.234+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [6edda8a1] |-->ItemRepository.save()
+2025-12-04T14:27:35.234+09:00  INFO 85180 --- [item-service] [main] h.i.domain.item.ItemDBRepository         : getConnection: HikariProxyConnection@696766714 wrapping conn0: url=jdbc:h2:tcp://localhost/~/test user=SA
+2025-12-04T14:27:35.235+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [6edda8a1] |<--ItemRepository.save() time=1ms
+2025-12-04T14:27:35.235+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [6edda8a1] ItemService.saveItem() time=1ms
+2025-12-04T14:27:35.235+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [4f80af8b] ItemService.findItems()
+2025-12-04T14:27:35.235+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [4f80af8b] |-->ItemRepository.findAll()
+2025-12-04T14:27:35.235+09:00  INFO 85180 --- [item-service] [main] h.i.domain.item.ItemDBRepository         : getConnection: HikariProxyConnection@119883832 wrapping conn0: url=jdbc:h2:tcp://localhost/~/test user=SA
+2025-12-04T14:27:35.236+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [4f80af8b] |<--ItemRepository.findAll() time=1ms
+2025-12-04T14:27:35.237+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [4f80af8b] ItemService.findItems() time=2ms
+2025-12-04T14:27:35.240+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Total items count: 38
+2025-12-04T14:27:35.240+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=70, itemName=상품1, price=10000, quantity=5)
+2025-12-04T14:27:35.240+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=71, itemName=상품2, price=20000, quantity=3121212)
+2025-12-04T14:27:35.240+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=72, itemName=상품1, price=10000, quantity=3)
+2025-12-04T14:27:35.240+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=73, itemName=상품2, price=20000, quantity=5)
+2025-12-04T14:27:35.240+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=74, itemName=상품3, price=30000, quantity=7)
+2025-12-04T14:27:35.240+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=75, itemName=조회 테스트 상품, price=20000, quantity=5)
+2025-12-04T14:27:35.240+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=76, itemName=테스트 상품, price=15000, quantity=10)
+2025-12-04T14:27:35.240+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=77, itemName=수정 후 상품, price=25000, quantity=15)
+2025-12-04T14:27:35.240+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=78, itemName=아천, price=312, quantity=3412)
+2025-12-04T14:27:35.240+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=79, itemName=상품1, price=10000, quantity=5)
+2025-12-04T14:27:35.240+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=80, itemName=상품2, price=20000, quantity=3)
+2025-12-04T14:27:35.241+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=81, itemName=상품1, price=10000, quantity=3)
+2025-12-04T14:27:35.241+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=82, itemName=상품2, price=20000, quantity=5)
+2025-12-04T14:27:35.241+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=83, itemName=상품3, price=30000, quantity=7)
+2025-12-04T14:27:35.241+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=84, itemName=조회 테스트 상품, price=20000, quantity=5)
+2025-12-04T14:27:35.241+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=85, itemName=테스트 상품, price=15000, quantity=10)
+2025-12-04T14:27:35.241+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=86, itemName=수정 후 상품, price=25000, quantity=15)
+2025-12-04T14:27:35.241+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=87, itemName=상품1, price=10000, quantity=5)
+2025-12-04T14:27:35.241+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=88, itemName=상품2, price=20000, quantity=3)
+2025-12-04T14:27:35.241+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=89, itemName=상품1, price=10000, quantity=3)
+2025-12-04T14:27:35.241+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=90, itemName=상품2, price=20000, quantity=5)
+2025-12-04T14:27:35.241+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=91, itemName=상품3, price=30000, quantity=7)
+2025-12-04T14:27:35.241+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=92, itemName=조회 테스트 상품, price=20000, quantity=5)
+2025-12-04T14:27:35.241+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=93, itemName=테스트 상품, price=15000, quantity=10)
+2025-12-04T14:27:35.241+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=94, itemName=수정 후 상품, price=25000, quantity=15)
+2025-12-04T14:27:35.241+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=95, itemName=상품1, price=10000, quantity=5)
+2025-12-04T14:27:35.241+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=96, itemName=상품2, price=20000, quantity=3)
+2025-12-04T14:27:35.241+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=97, itemName=상품1, price=10000, quantity=3)
+2025-12-04T14:27:35.241+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=98, itemName=상품2, price=20000, quantity=5)
+2025-12-04T14:27:35.241+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=99, itemName=상품3, price=30000, quantity=7)
+2025-12-04T14:27:35.241+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=100, itemName=조회 테스트 상품, price=20000, quantity=5)
+2025-12-04T14:27:35.241+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=101, itemName=테스트 상품, price=15000, quantity=10)
+2025-12-04T14:27:35.241+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=102, itemName=수정 후 상품, price=25000, quantity=15)
+2025-12-04T14:27:35.241+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=103, itemName=상품1, price=10000, quantity=5)
+2025-12-04T14:27:35.242+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=104, itemName=상품2, price=20000, quantity=3)
+2025-12-04T14:27:35.242+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=105, itemName=상품1, price=10000, quantity=3)
+2025-12-04T14:27:35.242+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=106, itemName=상품2, price=20000, quantity=5)
+2025-12-04T14:27:35.242+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=107, itemName=상품3, price=30000, quantity=7)
+2025-12-04T14:27:35.244+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : ItemService Class Name: hello.itemservice.service.item.ItemService$$SpringCGLIB$$0
+2025-12-04T14:27:35.244+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : ItemService Super Class: class hello.itemservice.service.item.ItemService
+2025-12-04T14:27:35.244+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : ItemService Interfaces: [interface org.springframework.aop.SpringProxy, interface org.springframework.aop.framework.Advised, interface org.springframework.cglib.proxy.Factory]
+2025-12-04T14:27:35.246+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [01eed599] ItemService.saveItem()
+2025-12-04T14:27:35.246+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [01eed599] |-->ItemRepository.save()
+2025-12-04T14:27:35.247+09:00  INFO 85180 --- [item-service] [main] h.i.domain.item.ItemDBRepository         : getConnection: HikariProxyConnection@854077600 wrapping conn0: url=jdbc:h2:tcp://localhost/~/test user=SA
+2025-12-04T14:27:35.248+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [01eed599] |<--ItemRepository.save() time=2ms
+2025-12-04T14:27:35.248+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [01eed599] ItemService.saveItem() time=2ms
+2025-12-04T14:27:35.248+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [23a6cafe] ItemService.findItem()
+2025-12-04T14:27:35.248+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [23a6cafe] |-->ItemRepository.findById()
+2025-12-04T14:27:35.248+09:00  INFO 85180 --- [item-service] [main] h.i.domain.item.ItemDBRepository         : getConnection: HikariProxyConnection@324946354 wrapping conn0: url=jdbc:h2:tcp://localhost/~/test user=SA
+2025-12-04T14:27:35.249+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [23a6cafe] |<--ItemRepository.findById() time=1ms
+2025-12-04T14:27:35.250+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [23a6cafe] ItemService.findItem() time=2ms
+2025-12-04T14:27:35.252+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Found Item: Item(id=108, itemName=조회 테스트 상품, price=20000, quantity=5)
+2025-12-04T14:27:35.255+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [6a33fda6] ItemService.saveItem()
+2025-12-04T14:27:35.255+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [6a33fda6] |-->ItemRepository.save()
+2025-12-04T14:27:35.255+09:00  INFO 85180 --- [item-service] [main] h.i.domain.item.ItemDBRepository         : getConnection: HikariProxyConnection@1165000566 wrapping conn0: url=jdbc:h2:tcp://localhost/~/test user=SA
+2025-12-04T14:27:35.258+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [6a33fda6] |<--ItemRepository.save() time=3ms
+2025-12-04T14:27:35.259+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [6a33fda6] ItemService.saveItem() time=4ms
+2025-12-04T14:27:35.259+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Saved Item: Item(id=109, itemName=테스트 상품, price=15000, quantity=10)
+2025-12-04T14:27:35.261+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [9e418e7b] ItemService.saveItem()
+2025-12-04T14:27:35.267+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [9e418e7b] |-->ItemRepository.save()
+2025-12-04T14:27:35.267+09:00  INFO 85180 --- [item-service] [main] h.i.domain.item.ItemDBRepository         : getConnection: HikariProxyConnection@1747085016 wrapping conn0: url=jdbc:h2:tcp://localhost/~/test user=SA
+2025-12-04T14:27:35.269+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [9e418e7b] |<--ItemRepository.save() time=1ms
+2025-12-04T14:27:35.269+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [9e418e7b] ItemService.saveItem() time=8ms
+2025-12-04T14:27:35.269+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [8851e0b4] ItemService.updateItem()
+2025-12-04T14:27:35.269+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [8851e0b4] |-->ItemRepository.update()
+2025-12-04T14:27:35.269+09:00  INFO 85180 --- [item-service] [main] h.i.domain.item.ItemDBRepository         : getConnection: HikariProxyConnection@1151942538 wrapping conn0: url=jdbc:h2:tcp://localhost/~/test user=SA
+2025-12-04T14:27:35.273+09:00  INFO 85180 --- [item-service] [main] h.i.domain.item.ItemDBRepository         : update resultSize=1
+2025-12-04T14:27:35.273+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [8851e0b4] |<--ItemRepository.update() time=4ms
+2025-12-04T14:27:35.273+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [8851e0b4] ItemService.updateItem() time=4ms
+2025-12-04T14:27:35.273+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [ad87ee12] ItemService.findItem()
+2025-12-04T14:27:35.273+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [ad87ee12] |-->ItemRepository.findById()
+2025-12-04T14:27:35.273+09:00  INFO 85180 --- [item-service] [main] h.i.domain.item.ItemDBRepository         : getConnection: HikariProxyConnection@40133542 wrapping conn0: url=jdbc:h2:tcp://localhost/~/test user=SA
+2025-12-04T14:27:35.275+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [ad87ee12] |<--ItemRepository.findById() time=2ms
+2025-12-04T14:27:35.275+09:00  INFO 85180 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [ad87ee12] ItemService.findItem() time=2ms
+2025-12-04T14:27:35.276+09:00  INFO 85180 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Updated Item: Item(id=110, itemName=수정 후 상품, price=25000, quantity=15)
+2025-12-04T14:27:35.281+09:00  INFO 85180 --- [item-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : ItemServicePool - Shutdown initiated...
+2025-12-04T14:27:35.285+09:00  INFO 85180 --- [item-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : ItemServicePool - Shutdown completed.
+2025-12-04T14:40:48.870+09:00  INFO 85633 --- [item-service] [main] h.itemservice.ItemServiceApplication     : Starting ItemServiceApplication using Java 17.0.16 with PID 85633 (/Users/chanwoo/Desktop/item-service/build/classes/java/main started by chanwoo in /Users/chanwoo/Desktop/item-service)
+2025-12-04T14:40:48.872+09:00  INFO 85633 --- [item-service] [main] h.itemservice.ItemServiceApplication     : The following 1 profile is active: "trace"
+2025-12-04T14:40:49.070+09:00  WARN 85633 --- [item-service] [main] trationDelegate$BeanPostProcessorChecker : Bean 'threadLocalLogTrace' of type [hello.itemservice.debug.trace.ThreadLocalLogTrace] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [customBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-12-04T14:40:49.133+09:00  INFO 85633 --- [item-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-12-04T14:40:49.136+09:00  INFO 85633 --- [item-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-04T14:40:49.136+09:00  INFO 85633 --- [item-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-12-04T14:40:49.149+09:00  INFO 85633 --- [item-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-04T14:40:49.149+09:00  INFO 85633 --- [item-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 266 ms
+2025-12-04T14:40:49.174+09:00  INFO 85633 --- [item-service] [main] com.zaxxer.hikari.HikariDataSource       : ItemServicePool - Starting...
+2025-12-04T14:40:49.203+09:00  INFO 85633 --- [item-service] [main] com.zaxxer.hikari.pool.HikariPool        : ItemServicePool - Added connection conn0: url=jdbc:h2:tcp://localhost/~/test user=SA
+2025-12-04T14:40:49.203+09:00  INFO 85633 --- [item-service] [main] com.zaxxer.hikari.HikariDataSource       : ItemServicePool - Start completed.
+2025-12-04T14:40:49.226+09:00  INFO 85633 --- [item-service] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2025-12-04T14:40:49.307+09:00  INFO 85633 --- [item-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-12-04T14:40:49.310+09:00  INFO 85633 --- [item-service] [main] h.itemservice.ItemServiceApplication     : Started ItemServiceApplication in 0.578 seconds (process running for 0.657)
+2025-12-04T14:40:52.479+09:00  INFO 85633 --- [item-service] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-04T14:40:52.480+09:00  INFO 85633 --- [item-service] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-12-04T14:40:52.480+09:00  INFO 85633 --- [item-service] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-12-04T14:40:52.494+09:00  INFO 85633 --- [item-service] [http-nio-8080-exec-1] h.i.debug.trace.ThreadLocalLogTrace      : [18b14ba4] BasicItemController.items()
+2025-12-04T14:40:52.494+09:00  INFO 85633 --- [item-service] [http-nio-8080-exec-1] h.i.debug.trace.ThreadLocalLogTrace      : [18b14ba4] |-->ItemService.findItems()
+2025-12-04T14:40:52.494+09:00  INFO 85633 --- [item-service] [http-nio-8080-exec-1] h.i.debug.trace.ThreadLocalLogTrace      : [18b14ba4] | |-->ItemRepository.findAll()
+2025-12-04T14:40:52.503+09:00  INFO 85633 --- [item-service] [http-nio-8080-exec-1] h.i.debug.trace.ThreadLocalLogTrace      : [18b14ba4] | |<--ItemRepository.findAll() time=9ms
+2025-12-04T14:40:52.503+09:00  INFO 85633 --- [item-service] [http-nio-8080-exec-1] h.i.debug.trace.ThreadLocalLogTrace      : [18b14ba4] |<--ItemService.findItems() time=9ms
+2025-12-04T14:40:52.503+09:00  INFO 85633 --- [item-service] [http-nio-8080-exec-1] h.i.debug.trace.ThreadLocalLogTrace      : [18b14ba4] BasicItemController.items() time=9ms
+2025-12-04T14:40:55.102+09:00  INFO 85633 --- [item-service] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-12-04T14:40:55.110+09:00  INFO 85633 --- [item-service] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-12-04T14:40:55.112+09:00  INFO 85633 --- [item-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : ItemServicePool - Shutdown initiated...
+2025-12-04T14:40:55.115+09:00  INFO 85633 --- [item-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : ItemServicePool - Shutdown completed.
+2025-12-04T14:40:59.594+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Starting ItemServiceTest using Java 17.0.16 with PID 85694 (started by chanwoo in /Users/chanwoo/Desktop/item-service)
+2025-12-04T14:40:59.595+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : The following 1 profile is active: "trace"
+2025-12-04T14:40:59.866+09:00  WARN 85694 --- [item-service] [main] trationDelegate$BeanPostProcessorChecker : Bean 'threadLocalLogTrace' of type [hello.itemservice.debug.trace.ThreadLocalLogTrace] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [customBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-12-04T14:40:59.898+09:00  INFO 85694 --- [item-service] [main] com.zaxxer.hikari.HikariDataSource       : ItemServicePool - Starting...
+2025-12-04T14:40:59.934+09:00  INFO 85694 --- [item-service] [main] com.zaxxer.hikari.pool.HikariPool        : ItemServicePool - Added connection conn0: url=jdbc:h2:tcp://localhost/~/test user=SA
+2025-12-04T14:40:59.938+09:00  INFO 85694 --- [item-service] [main] com.zaxxer.hikari.HikariDataSource       : ItemServicePool - Start completed.
+2025-12-04T14:41:00.005+09:00  INFO 85694 --- [item-service] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2025-12-04T14:41:00.127+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Started ItemServiceTest in 0.677 seconds (process running for 1.015)
+2025-12-04T14:41:00.433+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [dbd6f5f8] ItemService.saveItem()
+2025-12-04T14:41:00.433+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [dbd6f5f8] |-->ItemRepository.save()
+2025-12-04T14:41:00.445+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [dbd6f5f8] |<--ItemRepository.save() time=12ms
+2025-12-04T14:41:00.445+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [dbd6f5f8] ItemService.saveItem() time=12ms
+2025-12-04T14:41:00.456+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [6e1da84d] ItemService.saveItem()
+2025-12-04T14:41:00.456+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [6e1da84d] |-->ItemRepository.save()
+2025-12-04T14:41:00.457+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [6e1da84d] |<--ItemRepository.save() time=1ms
+2025-12-04T14:41:00.458+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [6e1da84d] ItemService.saveItem() time=2ms
+2025-12-04T14:41:00.462+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [eb2acdd1] ItemService.findItem()
+2025-12-04T14:41:00.462+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [eb2acdd1] |-->ItemRepository.findById()
+2025-12-04T14:41:00.465+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [eb2acdd1] |<--ItemRepository.findById() time=3ms
+2025-12-04T14:41:00.466+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [eb2acdd1] ItemService.findItem() time=4ms
+2025-12-04T14:41:00.466+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : First item exists after rollback: Item(id=111, itemName=상품1, price=10000, quantity=5)
+2025-12-04T14:41:00.474+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [63d7a5e4] ItemService.saveItem()
+2025-12-04T14:41:00.474+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [63d7a5e4] |-->ItemRepository.save()
+2025-12-04T14:41:00.475+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [63d7a5e4] |<--ItemRepository.save() time=1ms
+2025-12-04T14:41:00.475+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [63d7a5e4] ItemService.saveItem() time=1ms
+2025-12-04T14:41:00.475+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [2462200a] ItemService.saveItem()
+2025-12-04T14:41:00.475+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [2462200a] |-->ItemRepository.save()
+2025-12-04T14:41:00.476+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [2462200a] |<--ItemRepository.save() time=1ms
+2025-12-04T14:41:00.476+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [2462200a] ItemService.saveItem() time=1ms
+2025-12-04T14:41:00.476+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [a4ff9f82] ItemService.saveItem()
+2025-12-04T14:41:00.476+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [a4ff9f82] |-->ItemRepository.save()
+2025-12-04T14:41:00.477+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [a4ff9f82] |<--ItemRepository.save() time=1ms
+2025-12-04T14:41:00.477+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [a4ff9f82] ItemService.saveItem() time=1ms
+2025-12-04T14:41:00.477+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [8f3e30fe] ItemService.findItems()
+2025-12-04T14:41:00.477+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [8f3e30fe] |-->ItemRepository.findAll()
+2025-12-04T14:41:00.479+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [8f3e30fe] |<--ItemRepository.findAll() time=2ms
+2025-12-04T14:41:00.479+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [8f3e30fe] ItemService.findItems() time=2ms
+2025-12-04T14:41:00.481+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Total items count: 46
+2025-12-04T14:41:00.481+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=70, itemName=상품1, price=10000, quantity=5)
+2025-12-04T14:41:00.481+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=71, itemName=상품2, price=20000, quantity=3121212)
+2025-12-04T14:41:00.482+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=72, itemName=상품1, price=10000, quantity=3)
+2025-12-04T14:41:00.482+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=73, itemName=상품2, price=20000, quantity=5)
+2025-12-04T14:41:00.482+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=74, itemName=상품3, price=30000, quantity=7)
+2025-12-04T14:41:00.482+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=75, itemName=조회 테스트 상품, price=20000, quantity=5)
+2025-12-04T14:41:00.482+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=76, itemName=테스트 상품, price=15000, quantity=10)
+2025-12-04T14:41:00.482+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=77, itemName=수정 후 상품, price=25000, quantity=15)
+2025-12-04T14:41:00.482+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=78, itemName=아천, price=312, quantity=3412)
+2025-12-04T14:41:00.482+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=79, itemName=상품1, price=10000, quantity=5)
+2025-12-04T14:41:00.482+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=80, itemName=상품2, price=20000, quantity=3)
+2025-12-04T14:41:00.482+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=81, itemName=상품1, price=10000, quantity=3)
+2025-12-04T14:41:00.482+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=82, itemName=상품2, price=20000, quantity=5)
+2025-12-04T14:41:00.483+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=83, itemName=상품3, price=30000, quantity=7)
+2025-12-04T14:41:00.483+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=84, itemName=조회 테스트 상품, price=20000, quantity=5)
+2025-12-04T14:41:00.483+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=85, itemName=테스트 상품, price=15000, quantity=10)
+2025-12-04T14:41:00.483+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=86, itemName=수정 후 상품, price=25000, quantity=15)
+2025-12-04T14:41:00.483+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=87, itemName=상품1, price=10000, quantity=5)
+2025-12-04T14:41:00.483+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=88, itemName=상품2, price=20000, quantity=3)
+2025-12-04T14:41:00.483+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=89, itemName=상품1, price=10000, quantity=3)
+2025-12-04T14:41:00.483+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=90, itemName=상품2, price=20000, quantity=5)
+2025-12-04T14:41:00.483+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=91, itemName=상품3, price=30000, quantity=7)
+2025-12-04T14:41:00.483+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=92, itemName=조회 테스트 상품, price=20000, quantity=5)
+2025-12-04T14:41:00.483+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=93, itemName=테스트 상품, price=15000, quantity=10)
+2025-12-04T14:41:00.483+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=94, itemName=수정 후 상품, price=25000, quantity=15)
+2025-12-04T14:41:00.483+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=95, itemName=상품1, price=10000, quantity=5)
+2025-12-04T14:41:00.483+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=96, itemName=상품2, price=20000, quantity=3)
+2025-12-04T14:41:00.483+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=97, itemName=상품1, price=10000, quantity=3)
+2025-12-04T14:41:00.483+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=98, itemName=상품2, price=20000, quantity=5)
+2025-12-04T14:41:00.483+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=99, itemName=상품3, price=30000, quantity=7)
+2025-12-04T14:41:00.483+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=100, itemName=조회 테스트 상품, price=20000, quantity=5)
+2025-12-04T14:41:00.483+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=101, itemName=테스트 상품, price=15000, quantity=10)
+2025-12-04T14:41:00.484+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=102, itemName=수정 후 상품, price=25000, quantity=15)
+2025-12-04T14:41:00.484+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=103, itemName=상품1, price=10000, quantity=5)
+2025-12-04T14:41:00.484+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=104, itemName=상품2, price=20000, quantity=3)
+2025-12-04T14:41:00.484+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=105, itemName=상품1, price=10000, quantity=3)
+2025-12-04T14:41:00.484+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=106, itemName=상품2, price=20000, quantity=5)
+2025-12-04T14:41:00.484+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=107, itemName=상품3, price=30000, quantity=7)
+2025-12-04T14:41:00.484+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=108, itemName=조회 테스트 상품, price=20000, quantity=5)
+2025-12-04T14:41:00.484+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=109, itemName=테스트 상품, price=15000, quantity=10)
+2025-12-04T14:41:00.484+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=110, itemName=수정 후 상품, price=25000, quantity=15)
+2025-12-04T14:41:00.484+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=111, itemName=상품1, price=10000, quantity=5)
+2025-12-04T14:41:00.484+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=112, itemName=상품2, price=20000, quantity=3)
+2025-12-04T14:41:00.484+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=113, itemName=상품1, price=10000, quantity=3)
+2025-12-04T14:41:00.484+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=114, itemName=상품2, price=20000, quantity=5)
+2025-12-04T14:41:00.484+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Item: Item(id=115, itemName=상품3, price=30000, quantity=7)
+2025-12-04T14:41:00.486+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : ItemService Class Name: hello.itemservice.service.item.ItemService$$SpringCGLIB$$0
+2025-12-04T14:41:00.486+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : ItemService Super Class: class hello.itemservice.service.item.ItemService
+2025-12-04T14:41:00.486+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : ItemService Interfaces: [interface org.springframework.aop.SpringProxy, interface org.springframework.aop.framework.Advised, interface org.springframework.cglib.proxy.Factory]
+2025-12-04T14:41:00.489+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [d307c928] ItemService.saveItem()
+2025-12-04T14:41:00.489+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [d307c928] |-->ItemRepository.save()
+2025-12-04T14:41:00.491+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [d307c928] |<--ItemRepository.save() time=2ms
+2025-12-04T14:41:00.491+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [d307c928] ItemService.saveItem() time=2ms
+2025-12-04T14:41:00.491+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [68e2a1af] ItemService.findItem()
+2025-12-04T14:41:00.491+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [68e2a1af] |-->ItemRepository.findById()
+2025-12-04T14:41:00.492+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [68e2a1af] |<--ItemRepository.findById() time=1ms
+2025-12-04T14:41:00.492+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [68e2a1af] ItemService.findItem() time=1ms
+2025-12-04T14:41:00.494+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Found Item: Item(id=116, itemName=조회 테스트 상품, price=20000, quantity=5)
+2025-12-04T14:41:00.496+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [ac08c9dd] ItemService.saveItem()
+2025-12-04T14:41:00.497+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [ac08c9dd] |-->ItemRepository.save()
+2025-12-04T14:41:00.499+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [ac08c9dd] |<--ItemRepository.save() time=2ms
+2025-12-04T14:41:00.499+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [ac08c9dd] ItemService.saveItem() time=3ms
+2025-12-04T14:41:00.499+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Saved Item: Item(id=117, itemName=테스트 상품, price=15000, quantity=10)
+2025-12-04T14:41:00.502+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [1624a457] ItemService.saveItem()
+2025-12-04T14:41:00.502+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [1624a457] |-->ItemRepository.save()
+2025-12-04T14:41:00.506+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [1624a457] |<--ItemRepository.save() time=4ms
+2025-12-04T14:41:00.507+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [1624a457] ItemService.saveItem() time=5ms
+2025-12-04T14:41:00.507+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [72a35acf] ItemService.updateItem()
+2025-12-04T14:41:00.507+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [72a35acf] |-->ItemRepository.update()
+2025-12-04T14:41:00.511+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [72a35acf] |<--ItemRepository.update() time=4ms
+2025-12-04T14:41:00.512+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [72a35acf] ItemService.updateItem() time=5ms
+2025-12-04T14:41:00.512+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [be4e03ba] ItemService.findItem()
+2025-12-04T14:41:00.512+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [be4e03ba] |-->ItemRepository.findById()
+2025-12-04T14:41:00.515+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [be4e03ba] |<--ItemRepository.findById() time=3ms
+2025-12-04T14:41:00.515+09:00  INFO 85694 --- [item-service] [main] h.i.debug.trace.ThreadLocalLogTrace      : [be4e03ba] ItemService.findItem() time=3ms
+2025-12-04T14:41:00.515+09:00  INFO 85694 --- [item-service] [main] h.i.service.item.ItemServiceTest         : Updated Item: Item(id=118, itemName=수정 후 상품, price=25000, quantity=15)
+2025-12-04T14:41:00.529+09:00  INFO 85694 --- [item-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : ItemServicePool - Shutdown initiated...
+2025-12-04T14:41:00.533+09:00  INFO 85694 --- [item-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : ItemServicePool - Shutdown completed.

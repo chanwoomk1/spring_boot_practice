@@ -1,0 +1,42 @@
+2025-11-08T15:52:31.571+09:00  INFO 69385 --- [item-service] [main] h.itemservice.ItemServiceApplication     : Starting ItemServiceApplication using Java 17.0.16 with PID 69385 (/Users/chanwoo/Desktop/item-service/build/classes/java/main started by chanwoo in /Users/chanwoo/Desktop/item-service)
+2025-11-08T15:52:31.571+09:00  INFO 69385 --- [item-service] [main] h.itemservice.ItemServiceApplication     : The following 1 profile is active: "local"
+2025-11-08T15:52:31.795+09:00  WARN 69385 --- [item-service] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'customBeanPostProcessor' defined in file [/Users/chanwoo/Desktop/item-service/build/classes/java/main/hello/itemservice/debug/trace/postprocess/CustomBeanPostProcessor.class]: Unsatisfied dependency expressed through constructor parameter 0: No qualifying bean of type 'hello.itemservice.debug.trace.LogTrace' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2025-11-08T15:52:31.799+09:00  INFO 69385 --- [item-service] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-11-08T15:52:31.805+09:00 ERROR 69385 --- [item-service] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in hello.itemservice.debug.trace.postprocess.CustomBeanPostProcessor required a bean of type 'hello.itemservice.debug.trace.LogTrace' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'hello.itemservice.debug.trace.LogTrace' in your configuration.
+
+2025-11-08T15:53:18.833+09:00  INFO 69521 --- [item-service] [main] h.itemservice.ItemServiceApplication     : Starting ItemServiceApplication using Java 17.0.16 with PID 69521 (/Users/chanwoo/Desktop/item-service/build/classes/java/main started by chanwoo in /Users/chanwoo/Desktop/item-service)
+2025-11-08T15:53:18.834+09:00  INFO 69521 --- [item-service] [main] h.itemservice.ItemServiceApplication     : The following 1 profile is active: "local"
+2025-11-08T15:53:19.040+09:00  WARN 69521 --- [item-service] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'customBeanPostProcessor' defined in file [/Users/chanwoo/Desktop/item-service/build/classes/java/main/hello/itemservice/debug/trace/postprocess/CustomBeanPostProcessor.class]: Unsatisfied dependency expressed through constructor parameter 0: No qualifying bean of type 'hello.itemservice.debug.trace.LogTrace' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2025-11-08T15:53:19.043+09:00  INFO 69521 --- [item-service] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-11-08T15:53:19.048+09:00 ERROR 69521 --- [item-service] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in hello.itemservice.debug.trace.postprocess.CustomBeanPostProcessor required a bean of type 'hello.itemservice.debug.trace.LogTrace' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'hello.itemservice.debug.trace.LogTrace' in your configuration.
+
